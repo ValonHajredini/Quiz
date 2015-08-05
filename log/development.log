@@ -1,0 +1,1088 @@
+  [1m[36m (138.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (77.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20150803204035)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "username" varchar, "password" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150803204035"]]
+  [1m[35m (132.6ms)[0m  commit transaction
+Migrating to CreateQuestions (20150803204316)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question" varchar, "level" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150803204316"]]
+  [1m[35m (119.5ms)[0m  commit transaction
+Migrating to CreateAnswers (20150803204741)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "tru" varchar, "falce_1" varchar, "falce_2" varchar, "falce_3" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150803204741"]]
+  [1m[35m (119.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-08-03 22:48:33 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/railties-4.2.3/lib/rails/templates/rails/welcome/index.html.erb (15.8ms)
+Completed 200 OK in 74ms (Views: 42.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2015-08-03 22:48:39 +0200
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 2090ms (Views: 2075.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 22:48:41 +0200
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 22:48:41 +0200
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 22:48:41 +0200
+
+
+Started GET "/assets/scaffolds.self-56c20b38813477ae8531adee01603b3dfa2135bca31617e43d66cc87013cdfc7.css?body=1" for 127.0.0.1 at 2015-08-03 22:48:41 +0200
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 22:48:41 +0200
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-08-03 22:48:45 +0200
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (81.9ms)
+  Rendered users/new.html.erb within layouts/application (101.6ms)
+Completed 200 OK in 219ms (Views: 201.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-08-03 22:49:12 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eSNiILZ0oPoxC32RYZqF3w+1k5ZS5CSZNAHp6XpLdxj2VwOs9ImoJ0e0RNbWUWq/Y/nH0Ryz7ZzEyvW7bb3gSQ==", "user"=>{"name"=>"Valon Hajredini", "email"=>"hajredini.valon@gmail.com", "username"=>"ekoloni", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("name", "email", "username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Valon Hajredini"], ["email", "hajredini.valon@gmail.com"], ["username", "ekoloni"], ["password", "password"], ["created_at", "2015-08-03 20:49:12.085689"], ["updated_at", "2015-08-03 20:49:12.085689"]]
+  [1m[36m (128.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 147ms (ActiveRecord: 128.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-08-03 22:49:12 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 146ms (Views: 107.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2015-08-03 22:49:47 +0200
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 127ms (Views: 103.5ms | ActiveRecord: 0.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAnswers (20150803204741)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (8.0ms)[0m  [1mDROP TABLE "answers"[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20150803204741"]]
+  [1m[36m (116.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateQuestions (20150803204316)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mDROP TABLE "questions"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20150803204316"]]
+  [1m[36m (111.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20150803204035)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?  [["version", "20150803204035"]]
+  [1m[36m (145.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150803204035)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "username" varchar, "password" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150803204035"]]
+  [1m[36m (108.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateQuestions (20150803204316)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question" varchar, "level" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150803204316"]]
+  [1m[36m (130.6ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAnswers (20150803204741)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "tru" varchar, "falce_1" varchar, "falce_2" varchar, "falce_3" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150803204741"]]
+  [1m[36m (97.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePoints (20150803211237)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "point" varchar, "positions" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20150803211237"]]
+  [1m[36m (97.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+
+
+Started GET "/users" for 127.0.0.1 at 2015-08-03 23:34:28 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 653ms (Views: 591.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/points.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/scaffolds.self-56c20b38813477ae8531adee01603b3dfa2135bca31617e43d66cc87013cdfc7.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:29 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-03 23:34:30 +0200
+
+
+Started GET "/questions" for 127.0.0.1 at 2015-08-03 23:34:36 +0200
+Processing by QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered questions/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 172ms (Views: 170.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2015-08-03 23:34:38 +0200
+Processing by QuestionsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"  ORDER BY id ASC
+  Rendered questions/_form.html.erb (78.3ms)
+  Rendered questions/new.html.erb within layouts/application (85.4ms)
+Completed 200 OK in 201ms (Views: 185.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2015-08-03 23:34:49 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 101ms (Views: 99.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-08-03 23:34:51 +0200
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (6.1ms)
+  Rendered users/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 116ms (Views: 104.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-08-03 23:35:07 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sFnJBRbwOPryk/V4qBc6m7jdZr2+6+/qVENfPGgVcVk/LaiJVA0wJ4QszD8f3NX71JEy+vC8Ju+kiENuf+PmCA==", "user"=>{"name"=>"Valon Hajredini", "email"=>"hajredini.valon@gmail.com", "username"=>"ekoloni", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("name", "email", "username", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Valon Hajredini"], ["email", "hajredini.valon@gmail.com"], ["username", "ekoloni"], ["password", "password"], ["created_at", "2015-08-03 21:35:07.249897"], ["updated_at", "2015-08-03 21:35:07.249897"]]
+  [1m[35m (149.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 162ms (ActiveRecord: 150.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2015-08-03 23:35:07 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 133ms (Views: 107.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2015-08-03 23:35:11 +0200
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 88ms (Views: 86.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/new" for 127.0.0.1 at 2015-08-03 23:35:13 +0200
+Processing by QuestionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"  ORDER BY id ASC[0m
+  Rendered questions/_form.html.erb (7.6ms)
+  Rendered questions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 106ms (Views: 104.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2015-08-03 23:35:44 +0200
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OovYoaAhI2j+Xv0+WUjzdAvgvpMp4YKWYKykpJKPxzi1/7kt4twrtYjhxHnugxwUZ6zq1Ge2S5OQZ7j2hXlQaQ==", "question"=>{"question"=>"sa bajn 2 + 2", "level"=>"1", "user_id"=>"1"}, "commit"=>"Create Question"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "questions" ("question", "level", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["question", "sa bajn 2 + 2"], ["level", "1"], ["user_id", 1], ["created_at", "2015-08-03 21:35:44.780014"], ["updated_at", "2015-08-03 21:35:44.780014"]]
+  [1m[35m (204.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 211ms (ActiveRecord: 204.7ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-08-03 23:35:44 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered questions/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 105ms (Views: 102.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/1/edit" for 127.0.0.1 at 2015-08-03 23:35:51 +0200
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered questions/_form.html.erb (7.4ms)
+  Rendered questions/edit.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 106ms (Views: 103.9ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/questions/1" for 127.0.0.1 at 2015-08-03 23:35:59 +0200
+Processing by QuestionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/Qp4cz55SsMXHR1UbWZEOBa8gk0HfsMOaFRJ1AXBl25yfhn/fIRCHmGiJBParatYevDWCkkpCguYn1WGEjcAPw==", "question"=>{"question"=>"sa bajn 2 + 2?", "level"=>"1", "user_id"=>"1"}, "commit"=>"Update Question", "id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "questions" SET "question" = ?, "updated_at" = ? WHERE "questions"."id" = ?  [["question", "sa bajn 2 + 2?"], ["updated_at", "2015-08-03 21:35:59.458883"], ["id", 1]]
+  [1m[36m (193.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 204ms (ActiveRecord: 194.5ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-08-03 23:35:59 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.9ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered questions/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 84ms (Views: 80.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-08-03 23:45:26 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered questions/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 123ms (Views: 95.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-03 23:45:43 +0200
+Processing by AnswersController#index as HTML
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 134ms (Views: 131.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:45:48 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (52.6ms)
+  Rendered answers/new.html.erb within layouts/application (54.7ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.name, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632245908'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632245908'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632207048'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (52.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (37.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (72.3ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:45:49 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (6.8ms)
+  Rendered answers/new.html.erb within layouts/application (8.7ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.name, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632102968'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632102968'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (30.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (59.9ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:46:42 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (8.3ms)
+  Rendered answers/new.html.erb within layouts/application (12.0ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__638083188'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__638083188'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (64.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (29.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (60.0ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:49:51 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (6.8ms)
+  Rendered answers/new.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.4ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__633297838'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__633297838'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (18.4ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (54.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (68.1ms)
+
+
+Started GET "/answers/" for 127.0.0.1 at 2015-08-03 23:49:55 +0200
+Processing by AnswersController#index as HTML
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 91ms (Views: 89.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:49:57 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (5.3ms)
+  Rendered answers/new.html.erb within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632418858'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632418858'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632207048'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (28.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (58.3ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:49:57 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (3.8ms)
+  Rendered answers/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__633297838'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__633297838'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (49.4ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (29.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (60.5ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:52:07 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (8.7ms)
+  Rendered answers/new.html.erb within layouts/application (9.9ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <% @a_questions.each do |q|%>
+    17:     <%= f.select(:question_id, q.question , q.id) %>
+    18:     <% end %>
+    19:   </div>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632067628'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632067628'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (29.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (58.5ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:54:25 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (10.2ms)
+  Rendered answers/new.html.erb within layouts/application (12.7ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 1.2ms)
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <% @a_questions.each do |q|%>
+    17:     <%= f.select(:question_id, q.question , q.id) %>
+    18:     <% end %>
+    19:   </div>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632452978'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632452978'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (67.0ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:55:51 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (8.2ms)
+  Rendered answers/new.html.erb within layouts/application (9.5ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_questions.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055__632201758'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055__632201758'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (18.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (56.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (30.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (61.1ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:57:47 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (10.2ms)
+  Rendered answers/new.html.erb within layouts/application (11.4ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 9.4ms)
+
+ActionView::Template::Error (undefined method `map' for nil:NilClass):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :question_id %><br>
+    16:     <%= f.select(:question_id, @a_question.map {|s| [s.question, s.id]}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :tru %><br>
+  app/views/answers/_form.html.erb:16:in `block in _app_views_answers__form_html_erb__606940055_87746160'
+  app/views/answers/_form.html.erb:1:in `_app_views_answers__form_html_erb__606940055_87746160'
+  app/views/answers/new.html.erb:3:in `_app_views_answers_new_html_erb___108866566__632064318'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (29.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (61.0ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+Processing by AnswersController#new as HTML
+  [1m[35mQuestion Load (0.4ms)[0m  SELECT "questions".* FROM "questions"  ORDER BY id ASC
+  Rendered answers/_form.html.erb (19.9ms)
+  Rendered answers/new.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 113ms (Views: 111.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/points.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/scaffolds.self-56c20b38813477ae8531adee01603b3dfa2135bca31617e43d66cc87013cdfc7.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-03 23:58:02 +0200
+
+
+Started POST "/answers" for 127.0.0.1 at 2015-08-03 23:58:19 +0200
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+MOlJkDAfDeVAaS2AAwyUD0vpDJFopebvHKnY+lbK153t8SqAj106uO+nfG3x90wUWPwdQv1Xp5Mubsx/q28Dw==", "answer"=>{"question_id"=>"1", "tru"=>"4", "falce_1"=>"5", "falce_2"=>"2", "falce_3"=>"8"}, "commit"=>"Create Answer"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  app/controllers/answers_controller.rb:30:in `create'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.4ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (36.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (71.4ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-03 23:59:31 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (7.3ms)
+  Rendered answers/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 97ms (Views: 95.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for 127.0.0.1 at 2015-08-03 23:59:40 +0200
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OCAZ4jsK2ciu40B0uqV8TIfIRHCaIrWZCfhJY+kGirm3VHhueffRFdhceTMNbpMs64QQN9R1fJz5M1Ux/vAd6A==", "answer"=>{"question_id"=>"4", "tru"=>"zdsf", "falce_1"=>"dsfss", "falce_2"=>"dfdsfs", "falce_3"=>"sfs"}, "commit"=>"Create Answer"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  app/controllers/answers_controller.rb:30:in `create'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (30.4ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (60.1ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-04 00:02:59 +0200
+Processing by AnswersController#new as HTML
+  Rendered answers/_form.html.erb (6.0ms)
+  Rendered answers/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 107ms (Views: 88.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/answers/new" for 127.0.0.1 at 2015-08-04 00:03:08 +0200
+Processing by AnswersController#new as HTML
+  [1m[36mQuestion Load (0.6ms)[0m  [1mSELECT "questions".* FROM "questions"  ORDER BY id ASC[0m
+  Rendered answers/_form.html.erb (19.4ms)
+  Rendered answers/new.html.erb within layouts/application (20.9ms)
+Completed 200 OK in 105ms (Views: 102.7ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/answers" for 127.0.0.1 at 2015-08-04 00:03:18 +0200
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wRuUrGvVZbfwnRn5/ABUX8PsQAKVjQeLUeNeXG3l8M1Ob/UgKShtaoYiIL5Ly7s/r6AURdvazo6hKEIOehNnnA==", "answer"=>{"question_id"=>"1", "tru"=>"4", "falce_1"=>"1", "falce_2"=>"5", "falce_3"=>"3"}, "commit"=>"Create Answer"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  app/controllers/answers_controller.rb:30:in `create'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (28.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (59.3ms)
+
+
+Started POST "/answers" for 127.0.0.1 at 2015-08-04 00:05:18 +0200
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wRuUrGvVZbfwnRn5/ABUX8PsQAKVjQeLUeNeXG3l8M1Ob/UgKShtaoYiIL5Ly7s/r6AURdvazo6hKEIOehNnnA==", "answer"=>{"question_id"=>"1", "tru"=>"4", "falce_1"=>"1", "falce_2"=>"5", "falce_3"=>"3"}, "commit"=>"Create Answer"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "answers" ("question_id", "tru", "falce_1", "falce_2", "falce_3", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["question_id", 1], ["tru", "4"], ["falce_1", "1"], ["falce_2", "5"], ["falce_3", "3"], ["created_at", "2015-08-03 22:05:18.867072"], ["updated_at", "2015-08-03 22:05:18.867072"]]
+  [1m[35m (146.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/answers/1
+Completed 302 Found in 169ms (ActiveRecord: 148.5ms)
+
+
+Started GET "/answers/1" for 127.0.0.1 at 2015-08-04 00:05:19 +0200
+Processing by AnswersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered answers/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 106ms (Views: 97.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/answers/1" for 127.0.0.1 at 2015-08-04 00:09:51 +0200
+Processing by AnswersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAnswer Load (0.2ms)[0m  SELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered answers/show.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 103ms (Views: 100.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:19:30 +0200
+Processing by AnswersController#index as HTML
+  [1m[35mAnswer Load (0.3ms)[0m  SELECT "answers".* FROM "answers"
+  Rendered answers/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 115ms (Views: 114.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:21:38 +0200
+Processing by AnswersController#index as HTML
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  Rendered answers/index.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    18:     <% @answers.each do |answer| %>
+    19:       <tr>
+    20:         <td>
+    21:           <%@a_questions.each do |question|%>
+    22:             <% if question.id == @answer.question_id  %>
+    23:             <%= question.question %>
+    24:             <% end %>
+  app/views/answers/index.html.erb:21:in `block in _app_views_answers_index_html_erb___945323660__632452968'
+  app/views/answers/index.html.erb:18:in `_app_views_answers_index_html_erb___945323660__632452968'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (58.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.0ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (61.8ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:22:25 +0200
+Processing by AnswersController#index as HTML
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `al' for #<Class:0xb53f315c>):
+  app/controllers/answers_controller.rb:8:in `index'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (31.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (61.5ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:22:39 +0200
+Processing by AnswersController#index as HTML
+  [1m[35mAnswer Load (0.7ms)[0m  SELECT "answers".* FROM "answers"
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered answers/index.html.erb within layouts/application (50.4ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 2.2ms)
+
+ActionView::Template::Error (undefined method `question_id' for nil:NilClass):
+    19:       <tr>
+    20:         <td>
+    21:           <%@a_questions.each do |question|%>
+    22:             <% if question.id == @answer.question_id  %>
+    23:             <%= question.question %>
+    24:             <% end %>
+    25:             <% end%>
+  app/views/answers/index.html.erb:22:in `block (2 levels) in _app_views_answers_index_html_erb___945323660__632452968'
+  app/views/answers/index.html.erb:21:in `block in _app_views_answers_index_html_erb___945323660__632452968'
+  app/views/answers/index.html.erb:18:in `_app_views_answers_index_html_erb___945323660__632452968'
+
+
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (43.3ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (30.2ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /home/ekoloni/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (63.2ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+Processing by AnswersController#index as HTML
+  [1m[35mAnswer Load (0.4ms)[0m  SELECT "answers".* FROM "answers"
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT "questions".* FROM "questions"[0m
+  Rendered answers/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 92ms (Views: 90.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/points.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/scaffolds.self-56c20b38813477ae8531adee01603b3dfa2135bca31617e43d66cc87013cdfc7.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-04 00:24:43 +0200
+
+
+Started GET "/questions" for 127.0.0.1 at 2015-08-04 00:24:57 +0200
+Processing by QuestionsController#index as HTML
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered questions/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 82ms (Views: 80.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/questions/1/edit" for 127.0.0.1 at 2015-08-04 00:25:03 +0200
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  Rendered questions/_form.html.erb (13.9ms)
+  Rendered questions/edit.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 92ms (Views: 84.0ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/questions/1" for 127.0.0.1 at 2015-08-04 00:25:08 +0200
+Processing by QuestionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nxfMK6kXOfMBVd9hdDFdTgfdVwPD0y6YqkRUTMpFArIQY62n6+oxLnfq5ibD+rIua5EDRI2E551aj0ge3bOV4w==", "question"=>{"question"=>"sa bajn 2 + 2= ", "level"=>"1", "user_id"=>"1"}, "commit"=>"Update Question", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (29.9ms)[0m  [1mUPDATE "questions" SET "question" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["question", "sa bajn 2 + 2= "], ["updated_at", "2015-08-03 22:25:08.678756"], ["id", 1]]
+  [1m[35m (208.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 322ms (ActiveRecord: 239.1ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-08-04 00:25:09 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered questions/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 83ms (Views: 81.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/questions/1/edit" for 127.0.0.1 at 2015-08-04 00:25:11 +0200
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered questions/_form.html.erb (5.2ms)
+  Rendered questions/edit.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 81ms (Views: 78.4ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/questions/1" for 127.0.0.1 at 2015-08-04 00:25:19 +0200
+Processing by QuestionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zIJKTnFJ+XZ/UmJOHrn5/zc0QvsFk4/7n5IELLu+cj1D9ivCM7TxqwntWwmpchafW3gWvEvERv5vWRh+rEjlbA==", "question"=>{"question"=>"sa bajn 2 + 2= ?", "level"=>"1", "user_id"=>"1"}, "commit"=>"Update Question", "id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "questions" SET "question" = ?, "updated_at" = ? WHERE "questions"."id" = ?  [["question", "sa bajn 2 + 2= ?"], ["updated_at", "2015-08-03 22:25:19.295288"], ["id", 1]]
+  [1m[36m (221.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 228ms (ActiveRecord: 222.1ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2015-08-04 00:25:19 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered questions/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 84ms (Views: 82.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:25:26 +0200
+Processing by AnswersController#index as HTML
+  [1m[36mAnswer Load (0.2ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered answers/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 79ms (Views: 77.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+Processing by AnswersController#index as HTML
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered answers/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 89ms (Views: 87.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/answers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/points.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/questions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/scaffolds.self-56c20b38813477ae8531adee01603b3dfa2135bca31617e43d66cc87013cdfc7.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/answers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/questions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-08-04 00:25:49 +0200
+
+
+Started GET "/answers/1" for 127.0.0.1 at 2015-08-04 00:26:02 +0200
+Processing by AnswersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAnswer Load (0.4ms)[0m  [1mSELECT  "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mQuestion Load (0.3ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered answers/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 97ms (Views: 93.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/answers" for 127.0.0.1 at 2015-08-04 00:26:43 +0200
+Processing by AnswersController#index as HTML
+  [1m[36mAnswer Load (0.3ms)[0m  [1mSELECT "answers".* FROM "answers"[0m
+  [1m[35mQuestion Load (0.2ms)[0m  SELECT "questions".* FROM "questions"
+  Rendered answers/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 75ms (Views: 73.6ms | ActiveRecord: 0.5ms)

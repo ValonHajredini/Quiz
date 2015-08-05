@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question::</strong>
+  <%@a_questions.each do |question|%>
+  <% if question.id == @answer.question_id  %>
+  <%= question.question %>
+  <% end %>
+  <% end%>
+</p>
+
+<p>
+  <strong>Tru:</strong>
+  <%= @answer.tru %>
+</p>
+
+<p>
+  <strong>Falce 1:</strong>
+  <%= @answer.falce_1 %>
+</p>
+
+<p>
+  <strong>Falce 2:</strong>
+  <%= @answer.falce_2 %>
+</p>
+
+<p>
+  <strong>Falce 3:</strong>
+  <%= @answer.falce_3 %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>
+
+
+
+
+

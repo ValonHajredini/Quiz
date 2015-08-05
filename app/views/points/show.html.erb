@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @point.user_id %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @point.point %>
+</p>
+
+<p>
+  <strong>Positions:</strong>
+  <%= @point.positions %>
+</p>
+
+<%= link_to 'Edit', edit_point_path(@point) %> |
+<%= link_to 'Back', points_path %>
